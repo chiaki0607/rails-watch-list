@@ -4,6 +4,7 @@
     <%= link_to "Add a movie to the list", new_list_bookmark_path(params[:id]) %>
     <%= link_to "Back to Watch list", lists_path %>
   </div>
+  <div><%= cl_image_tag @list.photo.key, height: 200, width: 300, crop: :fill %></div>
 
   <% @list.movies.each do |movie| %>
     <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
