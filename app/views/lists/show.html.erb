@@ -1,8 +1,17 @@
 <h1><%= @list.name %></h1>
+<div class="container">
+  <div>
+    <%= link_to "Add a movie to the list", new_list_bookmark_path(params[:id]) %>
+    <%= link_to "Back to Watch list", lists_path %>
+  </div>
 
-<% @bookmarks.each do |bookmark| %>
-<%= bookmark.comment %>
-<%= bookmark.movie_id %>
-<% end %>
-
-<%= link_to "Back to Watch list", lists_path %>
+  <% @list.movies.each do |movie| %>
+    <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+    <%= image_tag movie.poster_url, alt: movie.title %>
+    <%= movie.title %>
+    <%= movie.rating %>
+    <%= movie.overview %>
+    <%= bookmark.comment %>
+    <%= bookmark.movie_id %>
+  <% end %>
+</div>
