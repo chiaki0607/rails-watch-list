@@ -7,6 +7,7 @@
   <%= link_to "Add a list", new_list_path %>
 </p>
 
+<!--
 <div class="cards">
  <% @lists.each do |list| %>
     <% if (list.photo.key != nil) %>
@@ -19,17 +20,17 @@
 
   <% end %>
 </div>
+-->
 
-
-<%# <ul> %>
-  <%# @lists.each do |list| %>
-  <%# <li> %>
-    <%#= link_to list.name, list_path(list) %>
-    <%# if (list.photo.key != nil) %>
-      <%#= cl_image_tag list.photo.key, height: 200, width: 300, crop: :fill %>
-    <%# else %>
-      <%# no image %>
-    <%# end %>
-  <%# </li> %>
-  <%# end %>
-<%# </ul> %>
+<ul>
+  <% @lists.each do |list| %>
+  <li>
+    <%= link_to list.name, list_path(list) %>
+    <% if (list.photo.key != nil) %>
+      <%= cl_image_tag list.photo.key, height: 200, width: 300, crop: :fill %>
+    <% else %>
+      no image
+    <% end %>
+  </li>
+  <% end %>
+</ul>
